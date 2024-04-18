@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\projects\\tets\\KonturSeleniumTests_Trubetskikh\\KonturSeleniumTests_Trubetskikh\\KonturSeleniumTests_Trubetskikh\\KonturSeleniumTests_Trubetskikh.csproj": {}
+    "D:\\projects\\tets\\KonturSeleniumTests_Trubetskikh\\KonturSeleniumTests_Trubetskikh\\KonturSeleniumTests_Trubetskikh.csproj": {}
   },
   "projects": {
-    "D:\\projects\\tets\\KonturSeleniumTests_Trubetskikh\\KonturSeleniumTests_Trubetskikh\\KonturSeleniumTests_Trubetskikh\\KonturSeleniumTests_Trubetskikh.csproj": {
+    "D:\\projects\\tets\\KonturSeleniumTests_Trubetskikh\\KonturSeleniumTests_Trubetskikh\\KonturSeleniumTests_Trubetskikh.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\projects\\tets\\KonturSeleniumTests_Trubetskikh\\KonturSeleniumTests_Trubetskikh\\KonturSeleniumTests_Trubetskikh\\KonturSeleniumTests_Trubetskikh.csproj",
+        "projectUniqueName": "D:\\projects\\tets\\KonturSeleniumTests_Trubetskikh\\KonturSeleniumTests_Trubetskikh\\KonturSeleniumTests_Trubetskikh.csproj",
         "projectName": "KonturSeleniumTests_Trubetskikh",
-        "projectPath": "D:\\projects\\tets\\KonturSeleniumTests_Trubetskikh\\KonturSeleniumTests_Trubetskikh\\KonturSeleniumTests_Trubetskikh\\KonturSeleniumTests_Trubetskikh.csproj",
+        "projectPath": "D:\\projects\\tets\\KonturSeleniumTests_Trubetskikh\\KonturSeleniumTests_Trubetskikh\\KonturSeleniumTests_Trubetskikh.csproj",
         "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "D:\\projects\\tets\\KonturSeleniumTests_Trubetskikh\\KonturSeleniumTests_Trubetskikh\\KonturSeleniumTests_Trubetskikh\\obj\\",
+        "outputPath": "D:\\projects\\tets\\KonturSeleniumTests_Trubetskikh\\KonturSeleniumTests_Trubetskikh\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

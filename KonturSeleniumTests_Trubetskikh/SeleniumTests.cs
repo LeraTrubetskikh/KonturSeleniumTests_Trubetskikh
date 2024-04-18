@@ -6,6 +6,22 @@ namespace KonturSeleniumTests_Trubetskikh;
 
 public class SeleniumTest
 {
+    private readonly List<string> _loginAndPassword;
+    
+    public SeleniumTest()
+    {
+        _loginAndPassword = GetLoginAndPassword();
+    }
+    
+    private List<string> GetLoginAndPassword()
+    {
+        var sr = new StreamReader(@"..\..\..\authorization.txt");
+        var login = sr.ReadLine();
+        var password = sr.ReadLine();
+        sr.Close();
+        return new List<string> {login, password};
+    }
+    
     [Test]
     public void Authorization()
     {
@@ -16,10 +32,10 @@ public class SeleniumTest
         Thread.Sleep(5000); // исправить
 
         var login = driver.FindElement(By.Id("Username"));
-        login.SendKeys("");
+        login.SendKeys(_loginAndPassword[0]);
         
         var password = driver.FindElement(By.Name("Password"));
-        password.SendKeys("");
+        password.SendKeys(_loginAndPassword[1]);
 
         var enter = driver.FindElement(By.Name("button"));
         enter.Click();
