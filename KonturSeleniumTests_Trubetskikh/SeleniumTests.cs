@@ -7,10 +7,14 @@ namespace KonturSeleniumTests_Trubetskikh;
 public class SeleniumTest
 {
     private readonly List<string> _loginAndPassword;
+    private ChromeOptions _options;
+    private ChromeDriver _driver;
     
     public SeleniumTest()
     {
         _loginAndPassword = GetLoginAndPassword();
+        _options = new ChromeOptions();
+        _options.AddArguments("--no-sandbox", "--start-maximized", "--disable-extensions");
     }
     
     private List<string> GetLoginAndPassword()
@@ -21,30 +25,37 @@ public class SeleniumTest
         sr.Close();
         return new List<string> {login, password};
     }
+
+    [SetUp]
+    public void SetUp()
+    {
+        _driver = new ChromeDriver(_options);
+    }
     
     [Test]
     public void Authorization()
     {
-        var options = new ChromeOptions();
-        options.AddArguments("--no-sandbox", "--start-maximized", "--disable-extensions");
-        var driver = new ChromeDriver(options);
-        driver.Navigate().GoToUrl("https://staff-testing.testkontur.ru");
+        _driver.Navigate().GoToUrl("https://staff-testing.testkontur.ru");
         Thread.Sleep(5000); // исправить
 
-        var login = driver.FindElement(By.Id("Username"));
+        var login = _driver.FindElement(By.Id("Username"));
         login.SendKeys(_loginAndPassword[0]);
         
-        var password = driver.FindElement(By.Name("Password"));
+        var password = _driver.FindElement(By.Name("Password"));
         password.SendKeys(_loginAndPassword[1]);
 
-        var enter = driver.FindElement(By.Name("button"));
+        var enter = _driver.FindElement(By.Name("button"));
         enter.Click();
         
         Thread.Sleep(5000); // исправить
 
-        var currentUrl = driver.Url;
+        var currentUrl = _driver.Url;
         Assert.That(currentUrl == "https://staff-testing.testkontur.ru/news");
-        
-        driver.Quit();
+    }
+
+    [TearDown]
+    public void TearDown()
+    {
+        _driver.Quit();
     }
 }
