@@ -1,6 +1,8 @@
 ﻿using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Support.UI;
+using SeleniumExtras.WaitHelpers;
 
 namespace KonturSeleniumTests_Trubetskikh;
 
@@ -36,7 +38,9 @@ public class SeleniumTest
     public void Authorization()
     {
         _driver.Navigate().GoToUrl("https://staff-testing.testkontur.ru");
-        Thread.Sleep(5000); // исправить
+        _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
+        var wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(5));
+        wait.Until(ExpectedConditions.ElementIsVisible(By.Id("Username")));
 
         var login = _driver.FindElement(By.Id("Username"));
         login.SendKeys(_loginAndPassword[0]);
@@ -46,8 +50,7 @@ public class SeleniumTest
 
         var enter = _driver.FindElement(By.Name("button"));
         enter.Click();
-        
-        Thread.Sleep(5000); // исправить
+        _driver.FindElement(By.CssSelector("[data-tid='Title']"));
 
         var currentUrl = _driver.Url;
         Assert.That(currentUrl == "https://staff-testing.testkontur.ru/news");
@@ -56,6 +59,7 @@ public class SeleniumTest
     [TearDown]
     public void TearDown()
     {
+        _driver.Close();
         _driver.Quit();
     }
 }

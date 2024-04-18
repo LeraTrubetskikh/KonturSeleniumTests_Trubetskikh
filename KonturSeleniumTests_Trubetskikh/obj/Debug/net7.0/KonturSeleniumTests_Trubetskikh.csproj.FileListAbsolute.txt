@@ -192,3 +192,4 @@ D:\projects\tets\KonturSeleniumTests_Trubetskikh\KonturSeleniumTests_Trubetskikh
 D:\projects\tets\KonturSeleniumTests_Trubetskikh\KonturSeleniumTests_Trubetskikh\obj\Debug\net7.0\KonturSeleniumTests_Trubetskikh.pdb
 D:\projects\tets\KonturSeleniumTests_Trubetskikh\KonturSeleniumTests_Trubetskikh\obj\Debug\net7.0\KonturSeleniumTests_Trubetskikh.genruntimeconfig.cache
 D:\projects\tets\KonturSeleniumTests_Trubetskikh\KonturSeleniumTests_Trubetskikh\obj\Debug\net7.0\ref\KonturSeleniumTests_Trubetskikh.dll
+D:\projects\tets\KonturSeleniumTests_Trubetskikh\KonturSeleniumTests_Trubetskikh\bin\Debug\net7.0\SeleniumExtras.WaitHelpers.dll

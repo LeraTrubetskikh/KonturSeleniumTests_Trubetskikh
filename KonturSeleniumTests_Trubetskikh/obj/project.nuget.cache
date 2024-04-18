@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "Vn5qcorZWRNL7jyS3IHrxA09ocWQBJbRb2PNymlHtCIn4KCEx+Bt6vloPeN5QNG/0GQ6xkfmY3mpxtntqc7UZA==",
+  "dgSpecHash": "zLu5PeWh19qQCihJ2xxJ91UsOnpy2QArHZsNU30y93MCe0ShweDHO6ne+MXkA3M72Pu4xTNr4dZD0Ydgdb/Iug==",
   "success": true,
   "projectFilePath": "D:\\projects\\tets\\KonturSeleniumTests_Trubetskikh\\KonturSeleniumTests_Trubetskikh\\KonturSeleniumTests_Trubetskikh.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\User\\.nuget\\packages\\dotnetseleniumextras.waithelpers\\3.11.0\\dotnetseleniumextras.waithelpers.3.11.0.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\microsoft.codecoverage\\17.9.0\\microsoft.codecoverage.17.9.0.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\microsoft.net.test.sdk\\17.9.0\\microsoft.net.test.sdk.17.9.0.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\microsoft.testplatform.objectmodel\\17.9.0\\microsoft.testplatform.objectmodel.17.9.0.nupkg.sha512",
