@@ -27,30 +27,31 @@ public class SeleniumTest
         sr.Close();
         return new List<string> {login, password};
     }
+    
+    private void Authorization()
+    {
+        _driver.Navigate().GoToUrl("https://staff-testing.testkontur.ru");
+        var login = _driver.FindElement(By.Id("Username"));
+        login.SendKeys(_loginAndPassword[0]);
+        var password = _driver.FindElement(By.Name("Password"));
+        password.SendKeys(_loginAndPassword[1]);
+        
+        var enter = _driver.FindElement(By.Name("button"));
+        enter.Click();
+        _driver.FindElement(By.CssSelector("[data-tid='Title']"));
+    }
 
     [SetUp]
     public void SetUp()
     {
         _driver = new ChromeDriver(_options);
+        _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
     }
     
     [Test]
-    public void Authorization()
+    public void AuthorizationTest()
     {
-        _driver.Navigate().GoToUrl("https://staff-testing.testkontur.ru");
-        _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
-        var wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(5));
-        wait.Until(ExpectedConditions.ElementIsVisible(By.Id("Username")));
-
-        var login = _driver.FindElement(By.Id("Username"));
-        login.SendKeys(_loginAndPassword[0]);
-        
-        var password = _driver.FindElement(By.Name("Password"));
-        password.SendKeys(_loginAndPassword[1]);
-
-        var enter = _driver.FindElement(By.Name("button"));
-        enter.Click();
-        _driver.FindElement(By.CssSelector("[data-tid='Title']"));
+        Authorization();
 
         var currentUrl = _driver.Url;
         Assert.That(currentUrl == "https://staff-testing.testkontur.ru/news");
