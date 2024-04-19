@@ -1,43 +1,48 @@
-﻿using NUnit.Framework;
+﻿using FluentAssertions;
+using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium.Support.UI;
-using SeleniumExtras.WaitHelpers;
 
 namespace KonturSeleniumTests_Trubetskikh;
 
 public class SeleniumTest
 {
-    private readonly List<string> _loginAndPassword;
+    private string _login;
+    private string _password;
     private ChromeOptions _options;
     private ChromeDriver _driver;
     
     public SeleniumTest()
     {
-        _loginAndPassword = GetLoginAndPassword();
+        GetLoginAndPassword();
         _options = new ChromeOptions();
         _options.AddArguments("--no-sandbox", "--start-maximized", "--disable-extensions");
     }
     
-    private List<string> GetLoginAndPassword()
+    private void GetLoginAndPassword()
     {
         var sr = new StreamReader(@"..\..\..\authorization.txt");
-        var login = sr.ReadLine();
-        var password = sr.ReadLine();
+        _login = sr.ReadLine() ?? throw new InvalidOperationException();
+        _password = sr.ReadLine() ?? throw new InvalidOperationException();
         sr.Close();
-        return new List<string> {login, password};
     }
     
     private void Authorization()
     {
+        // Перейти по ссылке https://staff-testing.testkontur.ru
         _driver.Navigate().GoToUrl("https://staff-testing.testkontur.ru");
-        var login = _driver.FindElement(By.Id("Username"));
-        login.SendKeys(_loginAndPassword[0]);
-        var password = _driver.FindElement(By.Name("Password"));
-        password.SendKeys(_loginAndPassword[1]);
         
+        // Ввести логин и пароль
+        var login = _driver.FindElement(By.Id("Username"));
+        login.SendKeys(_login);
+        var password = _driver.FindElement(By.Name("Password"));
+        password.SendKeys(_password);
+        
+        // Нажать на кнопку "Войти"
         var enter = _driver.FindElement(By.Name("button"));
         enter.Click();
+        
+        // Подождать пока страница загрузится
         _driver.FindElement(By.CssSelector("[data-tid='Title']"));
     }
 
@@ -53,8 +58,9 @@ public class SeleniumTest
     {
         Authorization();
 
+        // Проверить что находимся на нужной странице
         var currentUrl = _driver.Url;
-        Assert.That(currentUrl == "https://staff-testing.testkontur.ru/news");
+        currentUrl.Should().Be("https://staff-testing.testkontur.ru/news");
     }
 
     [TearDown]
